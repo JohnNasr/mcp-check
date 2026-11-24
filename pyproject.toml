@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-check"
+version = "0.1.0"
+description = "Automated tests for MCP servers: protocol, tool schemas, sample calls and breaking-change detection. For CI."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+mcp-check = "mcpcheck.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["mcpcheck*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-p no:asyncio"
